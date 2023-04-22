@@ -53,3 +53,33 @@ def remplazar_palabra(df, column, dictionary):
     df[column] = df[column].str.split()
     df[column] = df[column].apply(lambda x: ' '.join([dictionary[word] if word in dictionary else word for word in x]))
     return df
+
+
+def obtener_numeros(df, columna, regex='\d{2}'):
+    df['num_encontrado'] = None
+    filas = []
+    for i, valor in enumerate(df[df.columna]):
+        numeros = re.findall(regex, valor)  # busca los valores que cumplan el regex en cada elemento
+        if len(numeros) >= 2:
+            df.at[i, 'num_encontrado'] = numeros # guarda el valor encontrado en una nueva columna
+            filas.append[i]
+        else:
+            pass
+
+
+def obtener_numeros(df, columna, regex='\d{2}'):
+    df['num_encontrado'] = None
+    filas = []
+    for i, valor in enumerate(df[columna]):
+        if pd.notna(valor):  # verifica si el valor no es nulo
+            valor_str = str(valor)  # convierte el valor a string
+        numeros = re.findall(regex, valor)  # busca los valores que cumplan el regex en cada elemento
+        if len(numeros) >= 2:
+            df.at[i, 'num_encontrado'] = numeros  # guarda el valor encontrado en una nueva columna
+            filas.append[i]  # añade el numero de fila
+
+    for i, valor in enumerate(df[df.columna]):
+        if i in filas:
+            df.at[i, columna] = df.at[i, 'num_encontrado']  # reemplaza el valor con  'num_encontrado'
+
+    df.columna.index()
