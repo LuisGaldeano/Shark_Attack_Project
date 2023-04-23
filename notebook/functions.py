@@ -38,8 +38,6 @@ def repetidos(df, columna):
     return cantidad
 
 
-####### AGREGADO   ########
-
 def dos_num_seguidos(df, columna):
     output_list = []
     for i, valor in enumerate(df[columna]):
@@ -50,9 +48,15 @@ def dos_num_seguidos(df, columna):
     return df[columna].unique()
 
 
-
-
-
+####### AGREGADO   ########
+def faltan_unicos(df, columna):
+    faltan = []
+    anos = [str(i) for i in range(-1, 100)]
+    for valor in df[columna]:
+        if valor not in anos:
+            faltan.append(valor)
+    unicos = list(set(faltan))
+    return unicos
 
 
 #
